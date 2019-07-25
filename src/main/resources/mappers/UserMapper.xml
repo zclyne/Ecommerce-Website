@@ -188,6 +188,7 @@
   </select>
 
   <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    select
     <include refid="Base_Column_List"></include>
     from mmall_user
     where username = #{username}
