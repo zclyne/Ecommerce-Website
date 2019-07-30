@@ -14,13 +14,15 @@ public class PropertiesUtil {
 
     private static Properties props;
 
+    // 在类被加载时执行，读取配置文件
+    // 只执行一次，常用于初始化静态变量
     static {
         String fileName = "mmall.properties";
         props = new Properties();
         try {
             props.load(new InputStreamReader(PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName),"UTF-8"));
         } catch (IOException e) {
-            logger.error("配置文件读取异常",e);
+            logger.error("配置文件读取异常", e);
         }
     }
 
