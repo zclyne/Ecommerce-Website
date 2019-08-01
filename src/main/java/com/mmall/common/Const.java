@@ -19,6 +19,10 @@ public class Const {
     public interface Cart {
         int CHECKED = 1; // 购物车中商品选中状态
         int UNCHECKED = 0; // 购物车中商品未选中状态
+
+        String LIMIT_NUM_FAIL = "LIMIT_NUM_FAIL"; // 限制购物车中商品数量失败
+        String LIMIT_NUM_SUCCESS = "LIMIT_NUM_SUCCESS"; // 限制购物车中商品数量成功
+
     }
 
     public interface Role {

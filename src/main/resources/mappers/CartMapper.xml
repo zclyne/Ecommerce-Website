@@ -131,5 +131,40 @@
     from mmall_cart
     where user_id = #{userId}
   </select>
+  
+  <select id="selectCartProductCheckedStatusByUserId" resultType="int" parameterType="int">
+    select count(1)
+    from mmall_cart
+    where checked = 0
+    and user_id = #{userId}
+  </select>
+
+  <delete id="deleteByUserIdProductIds" parameterType="map">
+    delete from mmall_cart
+    where user_id = #{userId}
+    <if test="productIdList != null">
+      and product_id in
+      <foreach collection="productIdList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+  </delete>
+
+  <update id="checkedOrUncheckedProduct" parameterType="map">
+    update mmall_cart
+    set checked = #{checked},
+    update_time = now()
+    where user_id = #{userId}
+    <if test="productId != null">
+      and product_id = #{productId}
+    </if>
+  </update>
+
+<!-- 在没有找到时，默认的结果是null，不能赋予给int，因此要将其默认值设为0，以避免此问题 -->
+  <select id="selectCartProductCount" resultType="int" parameterType="int">
+    select IFNULL(sum(quantity), 0) as count
+    from mmall_cart
+    where user_id = #{userId}
+  </select>
 
 </mapper>
