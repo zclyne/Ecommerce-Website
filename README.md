@@ -1,2 +1,2 @@
-# Ecommerce-Website
-Mmall Project on https://www.imooc.com
+# Ecommerce-Website-Backend
+The backend module of mmall Project on https://www.imooc.com
